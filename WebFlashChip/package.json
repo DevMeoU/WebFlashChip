@@ -1,0 +1,17 @@
+{
+  "name": "WebFlashChip",
+  "version": "1.0.0",
+  "description": "A web application for uploading firmware to devices via COM ports.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "cors": "^2.8.5",
+    "serialport": "^9.2.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

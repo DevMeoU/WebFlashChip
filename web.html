@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Arduino Code via UART</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    pre { background: #f4f4f4; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Upload Arduino Code via UART</h1>
+  <button id="connect">Connect to Serial</button>
+  <br><br>
+  <input type="file" id="fileInput" accept=".hex,.bin,.ino">
+  <button id="upload">Upload Code</button>
+  <pre id="log"></pre>
+  
+  <script>
+    let port;
+    let writer;
+    const logElement = document.getElementById('log');
+    
+    function log(message) {
+      logElement.textContent += message + "\n";
+    }
+    
+    // Kết nối tới cổng serial
+    document.getElementById('connect').addEventListener('click', async () => {
+      try {
+        // Yêu cầu người dùng chọn một cổng serial
+        port = await navigator.serial.requestPort();
+        // Mở cổng với baud rate 115200 (có thể điều chỉnh)
+        await port.open({ baudRate: 115200 });
+        writer = port.writable.getWriter();
+        log("Connected to serial port.");
+      } catch (error) {
+        log("Error connecting to serial port: " + error);
+      }
+    });
+    
+    // Upload code qua serial
+    document.getElementById('upload').addEventListener('click', async () => {
+      if (!port) {
+        log("Please connect to a serial port first.");
+        return;
+      }
+      
+      const fileInput = document.getElementById('fileInput');
+      if (fileInput.files.length === 0) {
+        log("Please select a file to upload.");
+        return;
+      }
+      
+      const file = fileInput.files[0];
+      try {
+        const arrayBuffer = await file.arrayBuffer();
+        const data = new Uint8Array(arrayBuffer);
+        log("Uploading code...");
+        
+        // Gửi dữ liệu file qua serial. (Ở đây gửi toàn bộ file một lần.)
+        await writer.write(data);
+        log("Upload complete.");
+      } catch (error) {
+        log("Upload error: " + error);
+      }
+    });
+  </script>
+</body>
+</html>

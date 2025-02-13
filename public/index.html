@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arduino Flasher</title>
+  <style>
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .status { margin-top: 20px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Nạp Firmware Arduino</h1>
+    
+    <div id="port-selector">
+      <button onclick="refreshPorts()">Làm mới cổng COM</button>
+      <select id="ports"></select>
+    </div>
+
+    <form id="uploadForm">
+      <input type="file" id="firmware" accept=".hex">
+      <button type="submit">Nạp Firmware</button>
+    </form>
+
+    <div class="status" id="status"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
