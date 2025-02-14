@@ -1,9 +1,28 @@
 {
   "dependencies": {
+    "child_process": "^1.0.2",
     "cors": "^2.8.5",
-    "epress": "^0.0.1-security",
     "express": "^4.21.2",
     "multer": "^1.4.5-lts.1",
     "serialport": "^13.0.0"
-  }
+  },
+  "name": "webflashchip",
+  "version": "1.0.0",
+  "description": "; Hướng dẫn cài đặt dự án Arduino Flasher ; 1. Cài đặt các công cụ cần thiếtA;    - Cài đặt avrdude (Linux/macOS)n;    - Tạo project Node.js ; 2. Cấu trúc projectm;    - Cấu trúc dự án nên như sau:s;      arduino-flasher/t;      ├── public/ ;      │   ├── index.htmlê;      │   └── script.jsl;      ├── server.js ;      └── uploads/ ; 3. Cài đặt lại các package cần thiết ;    - Di chuyển vào thư mục project và cài đặt tất cả dependencies ; 4. Kiểm tra lại file package.json ;    - Đảm bảo trong file package.json có phần dependencies như sau: ;      \"dependencies\": { ;        \"express\": \"^4.18.2\", ;        \"multer\": \"^1.4.5-lts.1\", ;        \"cors\": \"^2.8.5\", ;        \"serialport\": \"^12.0.0\" ;      } ; 5. Khởi động lại server ;    - Khởi động server bằng lệnh: node server.js ; 6. Xóa node_modules và cài đặt lại ;    - Nếu vẫn gặp lỗi, thử các giải pháp sau: ;      rm -rf node_modules ;      rm package-lock.json ;      npm install ; 7. Kiểm tra phiên bản Node.js ;    - Đảm bảo đang dùng Node.js phiên bản 14.x trở lên: node -v ; 8. Kiểm tra quyền thư mục ;    - Đảm bảo thư mục node_modules có quyền đọc: ls -la node_modules/express ; Lý do lỗi thường gặp ;    - Chạy lệnh npm install sai thư mục. ;    - Thiếu package trong dependencies. ;    - Xóa nhầm thư mục node_modules. ;    - Phiên bản Node.js không tương thích. ; Sau khi cài đặt thành công các package, thư mục node_modules sẽ được tạo ra và bạn có thể khởi động server bình thường.asher/ ;      ├── public/ ;      │   ├── index.html ;      │   └── script.js ;      ├── server.js ;      └── uploads/ ; 3. Cài đặt lại các package cần thiết ;    - Di chuyển vào thư mục project và cài đặt tất cả dependencies ; 4. Kiểm tra lại file package.json ;    - Đảm bảo trong file package.json có phần dependencies như sau: ;      \"dependencies\": { ;        \"express\": \"^4.18.2\", ;        \"multer\": \"^1.4.5-lts.1\", ;        \"cors\": \"^2.8.5\", ;        \"serialport\": \"^12.0.0\" ;      } ; 5. Khởi động lại server ;    - Khởi động server bằng lệnh: node server.js ; 6. Xóa node_modules và cài đặt lại ;    - Nếu vẫn gặp lỗi, thử các giải pháp sau: ;      rm -rf node_modules ;      rm package-lock.json ;      npm install ; 7. Kiểm tra phiên bản Node.js ;    - Đảm bảo đang dùng Node.js phiên bản 14.x trở lên: node -v ; 8. Kiểm tra quyền thư mục ;    - Đảm bảo thư mục node_modules có quyền đọc: ls -la node_modules/express ; Lý do lỗi thường gặp ;    - Chạy lệnh npm install sai thư mục. ;    - Thiếu package trong dependencies. ;    - Xóa nhầm thư mục node_modules. ;    - Phiên bản Node.js không tương thích. ; Sau khi cài đặt thành công các package, thư mục node_modules sẽ được tạo ra và bạn có thể khởi động server bình thường.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevMeoU/WebFlashChip.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevMeoU/WebFlashChip/issues"
+  },
+  "homepage": "https://github.com/DevMeoU/WebFlashChip#readme"
 }
