@@ -1,29 +1,87 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Arduino Flasher</title>
-  <style>
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .status { margin-top: 20px; white-space: pre-wrap; }
-  </style>
+    <meta charset="UTF-8">
+    <title>Upload Arduino Code via UART</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .status {
+            margin-top: 20px;
+            white-space: pre-wrap;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Nạp Firmware Arduino</h1>
-    
-    <div id="port-selector">
-      <button onclick="refreshPorts()">Làm mới cổng COM</button>
-      <select id="ports"></select>
+    <div class="container">
+        <h1>Nạp Firmware Arduino</h1>
+
+        <div id="port-selector">
+            <button onclick="refreshPorts()">Làm mới cổng COM</button>
+            <select id="ports"></select>
+        </div>
+        <br></br>
+        <form id="uploadForm">
+            <input type="file" id="firmware" accept=".hex,.bin,.ino">
+            <button type="submit">Nạp Firmware</button>
+        </form>
+
+        <div class="status" id="status"></div>
     </div>
 
-    <form id="uploadForm">
-      <input type="file" id="firmware" accept=".hex">
-      <button type="submit">Nạp Firmware</button>
-    </form>
-
-    <div class="status" id="status"></div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
